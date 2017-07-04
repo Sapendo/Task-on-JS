@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+
+</head>
+
+<body>
+   <script>
+    function findUniq(masStr) {
+    var arr, indexMas;
+    arr = masStr.map(function(i){ 
+        return i.toLowerCase().match(/\w/g).sort().join('');//each word cleans from capital letters and spaces. Then do sort that words with the same letters become similar. And turn letters into word
+       
+    });
+        if (arr[0]===arr[1]){ // it means that we have basic word
+            indexMas = arr.findIndex(function(strIndex){// looking for the different word from basic word and return index the word
+                return strIndex!==arr[0];
+            });
+            return masStr[indexMas];
+        }
+    //Then if two words are different we are looking for the basic word and return another one.
+        else if(arr[0]===arr[arr.length-1]) return masStr[1];
+    else return masStr[0];
+}
+
+console.log(findUniq([ 'b ca', 'b ac ', 'test', 'cab', 'abc', 'cb a', ' a b c' ]));
+    </script>
+</body>
+
+</html>
